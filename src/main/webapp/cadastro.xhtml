@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"/>
+
+<style>
+	.cadastro{
+		background-color:white;
+		border-radius:5px;
+		padding:5px;
+		margin-top:9%;
+	}
+	
+	body{
+	background-size:100%;
+	background-repeat:no-repeat;
+		background-image: url("http://www.cutehdwallpapers.com/uploads/large/food/desktop-pizza-hd-wallpaper.jpg");
+	}
+</style>
+</head>
+<div class="row">
+<div class="container col-5">
+<h:form class="cadastro">
+	<div>
+	<center>
+	<h:outputLabel value="Nome de Usuário"/>
+	</center>
+	<h:message class="alert-danger" for="nomeu"></h:message>
+	<h:inputText id="nomeu" value="#{usuarioCadastroBean.usuario.nome}" class="form-control" required="true" requiredMessage="Campo Nome de usuário não pode estar vazio"/>
+	</div>
+	<div>
+	<center>
+	<h:outputLabel value="Nome completo"/>
+	</center>
+	<h:message class="alert-danger" for="nomec"></h:message>
+	<h:inputText id="nomec" value="#{usuarioCadastroBean.usuario.nomeCompleto}" class="form-control" required="true" requiredMessage="Campo Nome completo não pode estar vazio"/>
+	</div>
+	<div>
+	<center>
+	<h:outputLabel value="Email"/>
+	</center>
+	<h:message class="alert-danger" for="email"></h:message>
+	<h:inputText id="email" value="#{usuarioCadastroBean.usuario.email}" class="form-control" required="true" requiredMessage="Campo Email não pode estar vazio"/>
+	</div>
+	<div>
+	<center>
+	<h:outputLabel value="Senha"/>
+	</center>
+	<h:message class="alert-danger" for="senha"></h:message>
+	<h:inputSecret id="senha" value="#{usuarioCadastroBean.usuario.senha}" class="form-control" required="true" requiredMessage="Campo senha não pode estar vazio"/>
+	
+	</div>
+	<br/>
+	<center>
+	<h:commandButton value="Cadastrar" action="#{usuarioCadastroBean.cadastrar}" class="btn btn-success"/>
+	</center>
+</h:form>
+</div>
+</div>
+</html>

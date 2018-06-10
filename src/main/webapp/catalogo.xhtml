@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"/>
+<link href="stylesheets/jquery.growl.css" rel="stylesheet" type="text/css" />
+<style>
+body{
+background-color:antiquewhite;
+}
+tbody{
+background-color:antiquewhite;
+}
+ .card-title,
+        .card-text,
+        .card-footer {
+            color: white;
+        }
+ .card {
+            border: none;
+            background-color: #7f0000;
+        }
+
+        .texto .card {
+            border: none;
+            background-color: antiquewhite;
+            box-shadow: none;
+        }
+         nav a {
+            font-family: 'Dosis', sans-serif;
+            font-weight: 600;
+        }
+
+        .nav {
+            margin-top: 20px;
+        }
+
+        nav {
+            box-shadow: 0px 2px 2px black!important;
+        }
+         a:hover{
+            color:orangered!important;
+        }
+        .container{
+        margin-top:1%;
+        }
+</style>
+</head>
+<h:body>
+<p:growl id="msgCarrinho"/>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="#"><img src="http://pizzariaprojeto.000webhostapp.com/imagens/logo.png" height="70"/></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="http://pizzariaprojeto.000webhostapp.com">Home </a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="catalogo.xhtml">Catalogo</a>
+	      </li>
+		  <li class="nav-item">
+	        <a class="nav-link" href="carrinho.xhtml">Carrinho</a>
+	      </li>
+	      <li class="nav-item">
+	      <h:form>
+	        <a class="nav-link logout" style="float:left; margin-right:400px; margin-top:-4px; color:red!important;"><h:commandButton value="Logout" class="btn btn-danger" action="${loginBean.logout}" style="margin-left:100%;"/></a>
+	        </h:form>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	
+<div class="row">
+	<div class="container">
+	<h:form class="col-10" style="align-content:center; display:flex; margin-left:4%">
+	<p:dataGrid var="produto" value="#{carrinhoBean.listaProdutos}">
+		<div class="card" style="width: 18rem;">
+		  <img class="card-img-top"/>
+		  <div class="card-body">
+		    <p class="card-text">
+		    <h:outputText value="Sabor:" />
+    <h:outputText value="#{produto.sabor}" />
+<br/>
+    <h:outputText value="Tipo: " />
+    <h:outputText value="#{produto.tipo}" />
+<br/>
+    <h:outputText value="Descrição: " />
+    <h:outputText value="#{produto.descricao}" />
+<br/>
+    <h:outputText value="Preço: " />
+    <h:outputText value="#{produto.preco}" />
+<br/>  
+    <h:outputText value="Tamanho: " />
+    <h:outputText value="#{produto.tamanho}" />
+<br/>
+    <h:commandLink actionListener="#{carrinho.adiciona(produto)}" class="btn btn-warning" update=":msgCarrinho">
+    	Adicionar <img src='img/carrinho.svg'/>
+    </h:commandLink>
+		    </p>
+		  </div>
+		</div>
+</p:dataGrid>
+</h:form>
+</div>
+</div>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" ></script>
+</h:body>
+</html>

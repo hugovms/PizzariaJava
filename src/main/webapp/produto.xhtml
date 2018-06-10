@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:form id="formCadastro" enctype="multipart/form-data">
+	<div>
+	<h:inputHidden value="#{produtoCadastroBean.produto.id}"/>
+	</div>
+	<div>
+	<h:outputLabel value="Sabor"/>
+	<h:inputText value="#{produtoCadastroBean.produto.sabor}"/>
+	</div>
+	<div>
+	<h:outputLabel value="Tipo"/>
+	<h:inputText value="#{produtoCadastroBean.produto.tipo}"/>
+	</div>
+	<div>
+	<h:outputLabel value="Descrição"/>
+	<h:inputTextarea value="#{produtoCadastroBean.produto.descricao}"/>
+	</div>
+	<div>
+	<h:outputLabel value="preco"/>
+	<h:inputText value="#{produtoCadastroBean.produto.preco}"/>
+	</div>
+	<div>
+	<h:outputLabel value="Tamanho"/>
+	<h:selectOneMenu value="#{produtoCadastroBean.produto.tamanho}">
+	<f:selectItem itemValue="pequena" label="Pequena"  />
+	<f:selectItem itemValue="Media" label="Media"  />
+	<f:selectItem itemValue="Grande" label="Grande"  />
+	</h:selectOneMenu>
+	</div>
+	<div>
+	<h:outputLabel value="Imagem"/>
+	<h:inputFile value="#{produtoCadastroBean.imagemProduto}" id="imagemProduto"/>
+	</div>
+	<h:commandButton value="Cadastrar" action="#{produtoCadastroBean.cadastrar}"/>
+</h:form>
+<h:form id="formLista">
+<h:dataTable var="produto" value="#{produtoListaBean.produtos}">
+<h:column>
+	<f:facet name="header">Imagem</f:facet>
+	
+	</h:column>
+	<h:column>
+	<f:facet name="header">ID</f:facet>
+	#{produto.id}
+	</h:column>
+	<h:column>
+	<f:facet name="header">Sabor</f:facet>
+	#{produto.sabor}
+	</h:column>
+		<h:column>
+	<f:facet name="header">Tipo</f:facet>
+	#{produto.tipo}
+	</h:column>
+	<h:column>
+	<f:facet name="header">descricao</f:facet>
+	#{produto.descricao}
+	</h:column>
+	<h:column>
+	<f:facet name="header">Preço</f:facet>
+	#{produto.preco}
+	</h:column>
+	<h:column>
+	<f:facet name="header">Tamanho</f:facet>
+	#{produto.tamanho}
+	</h:column>
+	<h:column>
+	<h:commandButton value="excluir" action="#{produtoCadastroBean.remover(produto)}" />
+	<h:commandButton value="alterar" action="#{produtoCadastroBean.editar(produto)}" process="@this" update=":formCadastro"/>
+	</h:column>
+</h:dataTable>
+</h:form>
+</html>

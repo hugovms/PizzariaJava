@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:dataTable var="pedido" value="#{pedidoListaBean.produtos}">
+<h:column>
+	</h:column>
+	<h:column>
+	<f:facet name="header">ID</f:facet>
+	#{pedido.id}
+	</h:column>
+	<h:column>
+	<f:facet name="header">Nome</f:facet>
+	#{pedido.nomeCompleto}
+	</h:column>
+	<h:column>
+	<f:facet name="header">Telefone</f:facet>
+	#{pedido.telefone}
+	</h:column>
+	<h:column>
+	<f:facet name="header">celular</f:facet>
+	#{pedido.celular}
+	</h:column>
+	<h:column>
+	<f:facet name="header">Endereço</f:facet>
+	#{pedido.endereco}
+	</h:column>
+	<h:column>
+	<f:facet name="header">cep</f:facet>
+	#{pedido.cep}
+	</h:column>
+	<h:column>
+	<f:facet name="header">Cartao</f:facet>
+	#{pedido.cartaoCredito}
+	</h:column>
+	<h:column>
+	<f:facet name="header">Digito</f:facet>
+	#{pedido.digitoSeguranca}
+	</h:column>
+	<h:column>
+	<h:commandButton value="excluir" />
+	<h:commandButton value="alterar" process="@this" update=":formCadastro"/>
+	</h:column>
+</h:dataTable>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"/>
+<style>
+        nav a {
+            font-family: 'Dosis', sans-serif;
+            font-weight: 600;
+        }
+
+        .nav {
+            margin-top: 20px;
+        }
+
+        nav {
+            box-shadow: 0px 2px 2px black!important;
+        }
+         a:hover{
+            color:orangered!important;
+        }
+        .preco{
+        	font-size: 30px;
+        	float:left;
+        }
+</style>
+</head>
+<h:head></h:head>
+<f:view>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="#"><img src="http://pizzariaprojeto.000webhostapp.com/imagens/logo.png" height="70"/></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	  </button>
+	
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="#">Home</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="catalogo.xhtml">Catalogo</a>
+	      </li>
+		  <li class="nav-item">
+	        <a class="nav-link" href="carrinho.xhtml">Carrinho</a>
+	      </li>
+	      <li class="nav-item">
+	      <h:form>
+	        <a class="nav-link logout" style="float:left; margin-right:400px; margin-top:-4px; color:red!important;"><h:commandButton value="Logout" class="btn btn-danger" action="${loginBean.logout}" style="margin-left:100%;"/></a>
+	        </h:form>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	<div class="row">
+	<div class="container">
+<h:form>
+<br/>
+Nome Completo:
+<h:inputText class="form-control" value="#{pedidoCadastroBean.pedido.nomeCompleto}"/>
+Telefone:
+<h:inputText class="form-control" maxlength="10" value="#{pedidoCadastroBean.pedido.telefone}"/>
+Celular:
+<h:inputText class="form-control" maxlength="11" value="#{pedidoCadastroBean.pedido.celular}"/>
+Endereço:
+<h:inputText class="form-control" value="#{pedidoCadastroBean.pedido.endereco}"/> 
+CEP:
+<h:inputText class="form-control" maxlength="8" value="#{pedidoCadastroBean.pedido.cep}"/>
+Cartão de crédito:
+<h:inputText class="form-control col-3" value="#{pedidoCadastroBean.pedido.cartaoCredito}"/>
+Dígito de segurança:
+<h:inputText class="form-control col-1" value="#{pedidoCadastroBean.pedido.digitoSeguranca}"/>
+<h:commandButton value="enviar" action="#{pedidoCadastroBean.cadastrarPedido}"/>
+</h:form>
+<table class="table"> 
+  </table>
+  <h:form>
+<h:dataTable var="prodCarrinho" value="#{carrinho.produtos}" class="table">
+    <h:column>
+    <f:facet name="header">Sabor</f:facet>
+    <h:outputText value="#{prodCarrinho.sabor}" />
+	</h:column>
+	<h:column>
+	<f:facet name="header">Tipo</f:facet>
+    <h:outputText value="#{prodCarrinho.tipo}" />
+	</h:column>
+	<h:column>
+	<f:facet name="header">Preço</f:facet>
+    <h:outputText value="#{prodCarrinho.preco}" />
+    </h:column>
+    <h:column>
+    <f:facet name="header">Tamanho</f:facet>
+    <h:outputText value="#{prodCarrinho.tamanho}" />
+    </h:column>
+    <h:column>
+    <f:facet name="header">Quantidade</f:facet>
+    <h:outputText value="#{prodCarrinho.qtdCarrinho}" />
+  	</h:column>
+
+</h:dataTable>
+</h:form>
+<div class="col-12 preco">
+TOTAL: R$
+<h:outputText value="#{carrinho.total()}">
+<f:convertNumber pattern="#0.00" />
+</h:outputText>
+</div>
+</div>
+</div>
+</f:view>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" ></script>
+</html>

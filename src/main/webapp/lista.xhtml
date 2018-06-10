@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:form id="formCadastro">
+	<div>
+	<h:inputHidden value="#{usuarioCadastroBean.usuario.id}"/>
+	</div>
+	<div>
+	<h:outputLabel value="nome"/>
+	<h:inputText value="#{usuarioCadastroBean.usuario.nome}"/>
+	</div>
+	<div>
+	<h:outputLabel value="email"/>
+	<h:inputText value="#{usuarioCadastroBean.usuario.email}"/>
+	</div>
+	<div>
+	<h:outputLabel value="senha"/>
+	<h:inputSecret value="#{usuarioCadastroBean.usuario.senha}"/>
+	</div>
+	<h:commandButton value="Cadastrar" action="#{usuarioCadastroBean.cadastrar}" update="@form :formLista"/>
+</h:form>
+<h:form id="formLista">
+<h:dataTable var="usuario" value="#{usuarioListaBean.usuarios}">
+	<h:column>
+	<f:facet name="header">ID</f:facet>
+	#{usuario.id}
+	</h:column>
+	<h:column>
+	<f:facet name="header">Nome</f:facet>
+	#{usuario.nome}
+	</h:column>
+		<h:column>
+	<f:facet name="header">email</f:facet>
+	#{usuario.email}
+	</h:column>
+		<h:column>
+	<f:facet name="header">senha</f:facet>
+	#{usuario.senha}
+	</h:column>
+	<h:column>
+	<h:commandButton value="excluir" action="#{usuarioCadastroBean.remover(user)}" />
+	<h:commandButton value="alterar" onclick="if (!confirm('Confirma a exclusão ?')) return false;" action="#{usuarioCadastroBean.editar(user)}" process="@this" update=":formCadastro"/>
+	</h:column>
+</h:dataTable>
+</h:form>
+</html>
