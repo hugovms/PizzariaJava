@@ -26,6 +26,16 @@ public class Produto {
 
 	private String tamanho;
 	
+	private String imagemPath;
+	
+	public String getImagemPath() {
+		return imagemPath;
+	}
+
+	public void setImagemPath(String imagemPath) {
+		this.imagemPath = imagemPath;
+	}
+
 	public String getTamanho() {
 		return tamanho;
 	}

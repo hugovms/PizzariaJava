@@ -10,7 +10,6 @@
         <!-- java transaction api || JNDI -->
         <jta-data-source>java:jboss/datasources/pizzariaDS</jta-data-source>
         <class>br.com.pizzaria.models.Usuario</class>
-        <class>br.com.pizzaria.models.Pedido</class>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true" />

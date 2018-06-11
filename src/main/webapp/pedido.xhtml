@@ -6,8 +6,60 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
+	<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"/>
+<style>
+        nav a {
+            font-family: 'Dosis', sans-serif;
+            font-weight: 600;
+        }
 
-<h:dataTable var="pedido" value="#{pedidoListaBean.produtos}">
+        .nav {
+            margin-top: 20px;
+        }
+
+        nav {
+            box-shadow: 0px 2px 2px black!important;
+        }
+         a:hover{
+            color:orangered!important;
+        }
+        .preco{
+        	font-size: 30px;
+        	float:left;
+        }
+</style>
+</head>
+	<h:head></h:head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="#"><img src="http://pizzariaprojeto.000webhostapp.com/imagens/logo.png" height="70"/></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	  </button>
+	
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="#">Home</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="pedido.xhtml">Pedidos</a>
+	      </li>
+		  <li class="nav-item">
+	        <a class="nav-link" href="lista.xhtml">Administradores</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="produto.xhtml">Produtos</a>
+	      </li>
+	     <li class="nav-item">
+	        <a class="nav-link btn btn-primary" style="margin-left:90%; color:black;" href="login.xhtml">Admin</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+<div class="container">
+<div class="row">
+<div class="col-10">
+<h:dataTable var="pedido" value="#{pedidoListaBean.pedidos}" class="table">
 <h:column>
 	</h:column>
 	<h:column>
@@ -43,8 +95,11 @@
 	#{pedido.digitoSeguranca}
 	</h:column>
 	<h:column>
-	<h:commandButton value="excluir" />
-	<h:commandButton value="alterar" process="@this" update=":formCadastro"/>
+	<h:commandButton value="excluir" class="btn btn-danger"/>
+	<h:commandButton value="alterar" process="@this" class="btn btn-warning" update=":formCadastro"/>
 	</h:column>
 </h:dataTable>
+</div>
+</div>
+</div>
 </html>

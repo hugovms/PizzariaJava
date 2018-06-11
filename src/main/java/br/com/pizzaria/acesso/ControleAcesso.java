@@ -1,5 +1,6 @@
 package br.com.pizzaria.acesso;
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -28,15 +29,16 @@ public class ControleAcesso implements Filter{
 		if((session.getAttribute("USUARIOLogado") != null)
 				|| (req.getRequestURI().endsWith("login.xhtml"))
 				|| (req.getRequestURI().endsWith("index.xhtml"))
-				|| (req.getRequestURI().endsWith("admin.xhtml"))
-				|| (req.getRequestURI().endsWith("pedido.xhtml"))
+				|| (req.getRequestURI().endsWith("carrinho.xhtml"))
 				|| (req.getRequestURI().endsWith("finaliza.xhtml"))
+				|| (req.getRequestURI().endsWith("/file/"))
 				|| (req.getRequestURI().endsWith("javax.faces.resource/"))
 				|| (req.getRequestURI().endsWith("cadastro.xhtml"))){
 			chain.doFilter(request, response);
-		}else {
-			redireciona("/pizzaria/index.xhtml",response);
+		}else{
+			redireciona("index.xhtml",response);
 		}
+		
 	}
 
 	@Override

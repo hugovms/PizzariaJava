@@ -9,6 +9,7 @@ import javax.servlet.http.Part;
 import javax.transaction.Transactional;
 
 import br.com.pizzaria.dao.ProdutoDao;
+import br.com.pizzaria.infra.FileSaver;
 import br.com.pizzaria.models.Produto;
 
 @Named
@@ -46,14 +47,15 @@ public class ProdutoCadastroBean {
 	public void cadastrar() throws IOException {
 		if(produto.getId() == null) {
 			dao.cadastrar(produto);
-			
-			imagemProduto.write("/home/hugo/workspace/pizzaria/imagens/" + imagemProduto.getSubmittedFileName());
-			
+			FileSaver fileSaver = new FileSaver();
+			produto.setImagemPath(fileSaver.write(imagemProduto, "imagens"));
 			System.out.println("user cadastrado" + produto);
 		}else {
 			dao.editar(produto);
 		}
 	}
+
+
 
 	@Transactional
 	public void remover(Produto produto) {

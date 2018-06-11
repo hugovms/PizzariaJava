@@ -5,26 +5,80 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"/>
+<style>
+        nav a {
+            font-family: 'Dosis', sans-serif;
+            font-weight: 600;
+        }
+
+        .nav {
+            margin-top: 20px;
+        }
+
+        nav {
+            box-shadow: 0px 2px 2px black!important;
+        }
+         a:hover{
+            color:orangered!important;
+        }
+        .preco{
+        	font-size: 30px;
+        	float:left;
+        }
+</style>
+</head>
+	<h:head></h:head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="#"><img src="http://pizzariaprojeto.000webhostapp.com/imagens/logo.png" height="70"/></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	  </button>
+	
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="#">Home</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="pedido.xhtml">Pedidos</a>
+	      </li>
+		  <li class="nav-item">
+	        <a class="nav-link" href="lista.xhtml">Administradores</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="produto.xhtml">Produtos</a>
+	      </li>
+	     <li class="nav-item">
+	        <a class="nav-link btn btn-primary" style="margin-left:90%; color:black;" href="login.xhtml">Admin</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	
+<div class="container">
+<div class="row">
+<div class="col-10">
 <h:form id="formCadastro">
 	<div>
-	<h:inputHidden value="#{usuarioCadastroBean.usuario.id}"/>
+	<h:inputHidden value="#{usuarioCadastroBean.usuario.id}" class="form-control"/>
 	</div>
 	<div>
 	<h:outputLabel value="nome"/>
-	<h:inputText value="#{usuarioCadastroBean.usuario.nome}"/>
+	<h:inputText value="#{usuarioCadastroBean.usuario.nome}" class="form-control"/>
 	</div>
 	<div>
 	<h:outputLabel value="email"/>
-	<h:inputText value="#{usuarioCadastroBean.usuario.email}"/>
+	<h:inputText value="#{usuarioCadastroBean.usuario.email}" class="form-control"/>
 	</div>
 	<div>
 	<h:outputLabel value="senha"/>
-	<h:inputSecret value="#{usuarioCadastroBean.usuario.senha}"/>
+	<h:inputSecret value="#{usuarioCadastroBean.usuario.senha}" class="form-control"/>
 	</div>
-	<h:commandButton value="Cadastrar" action="#{usuarioCadastroBean.cadastrar}" update="@form :formLista"/>
+	<h:commandButton value="Cadastrar" action="#{usuarioCadastroBean.cadastrar}" update="@form :formLista" class="btn btn-primary"/>
 </h:form>
 <h:form id="formLista">
-<h:dataTable var="usuario" value="#{usuarioListaBean.usuarios}">
+<h:dataTable var="usuario" value="#{usuarioListaBean.usuarios}" class="table">
 	<h:column>
 	<f:facet name="header">ID</f:facet>
 	#{usuario.id}
@@ -42,9 +96,12 @@
 	#{usuario.senha}
 	</h:column>
 	<h:column>
-	<h:commandButton value="excluir" action="#{usuarioCadastroBean.remover(user)}" />
-	<h:commandButton value="alterar" onclick="if (!confirm('Confirma a exclusão ?')) return false;" action="#{usuarioCadastroBean.editar(user)}" process="@this" update=":formCadastro"/>
+	<h:commandButton value="excluir" action="#{usuarioCadastroBean.remover(user)}" class="btn btn-danger"/>
+	<h:commandButton value="alterar" onclick="if (!confirm('Confirma a exclusão ?')) return false;" action="#{usuarioCadastroBean.editar(user)}" class="btn btn-warning" process="@this" update=":formCadastro"/>
 	</h:column>
 </h:dataTable>
 </h:form>
+</div>
+</div>
+</div>
 </html>

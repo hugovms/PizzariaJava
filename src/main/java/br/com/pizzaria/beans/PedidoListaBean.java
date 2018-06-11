@@ -12,6 +12,19 @@ import br.com.pizzaria.models.Pedido;
 @Model
 public class PedidoListaBean {
 	
+	
+	public PedidoDao getDao() {
+		return dao;
+	}
+
+	public void setDao(PedidoDao dao) {
+		this.dao = dao;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
 	@Inject
 	private PedidoDao dao;
 	

@@ -29,14 +29,24 @@ public class LoginBean {
 		}else {
 			Object b = new Object();
 			SessionUtil.setParam("USUARIOLogado", b);
-			return "catalogo.xhtml?faces-redirect=true";
+			return "produto.xhtml?faces-redirect=true";
 		}
 	}
+		
+	public UsuarioDao getUsuarioDao() {
+			return usuarioDao;
+		}
+
+		public void setUsuarioDao(UsuarioDao usuarioDao) {
+			this.usuarioDao = usuarioDao;
+		}
+
+
 	public String logout() {
 		FacesContext fc = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession)fc.getExternalContext().getSession(false);
         session.invalidate();
-        return "login.xhtml";
+        return "login.xhtml?faces-redirect=true";
 	}
 	public Usuario getUsuario() {
 		return usuario;
